@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+	http://www.springframework.org/schema/beans/spring-beans.xsd">
+ 
+  
+	  
+	  <bean id="shapeList" class="com.springcore.di.ShapeWithList">  
+		<property name = "points"> 
+		     <list> 
+	             <ref  bean="point1"/>
+	             <ref  bean="point1"/>
+	             <ref  bean="point2"/>
+	             <ref  bean="point3"/>	             
+	          </list>
+        </property>    
+	 </bean>
+	 
+	  <bean id="shapeSet" class="com.springcore.di.ShapeWithSet">  
+		<property name = "points"> 
+		     <set> 
+	             <ref  bean="point1"/>
+	             <ref  bean="point1"/>
+	             <ref  bean="point2"/>
+	             <ref  bean="point3"/>	             
+	          </set>
+        </property>    
+	 </bean> 
+	 
+	 <bean id="point1" class="com.springcore.di.Point"> 
+	    <property name="x" value="0"></property> 
+		<property name="y" value="0"></property> 
+	  </bean>
+	  <bean id="point2" class="com.springcore.di.Point"> 
+	    <property name="x" value="-20"></property> 
+		<property name="y" value="0"></property> 
+	  </bean>
+	  <bean id="point3" class="com.springcore.di.Point"> 
+	    <property name="x" value="0"></property> 
+		<property name="y" value="20"></property> 
+	  </bean>
+	
+	     
+        <!-- <property name="">
+          <map>
+             <entry> 
+                <key>   </key>
+                <value> </value>
+             </entry>
+          </map>
+        </property> -->
+		    
+
+</beans>
+
+<!--  <bean id="shape2" class="com.springcore.di.Shape2">  
+		<property name = "points"> 
+		     <list> 
+	             <value>12,34</value>
+				 <value>34,45</value>
+				 <value>67,78</value>
+	          </list>
+        </property> 
+       </bean> -->

@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	   xmlns:context="http://www.springframework.org/schema/context"
+	   xsi:schemaLocation="http://www.springframework.org/schema/beans 
+	                    http://www.springframework.org/schema/beans/spring-beans-3.0.xsd 
+                        http://www.springframework.org/schema/context 
+                        http://www.springframework.org/schema/context/spring-context.xsd">
+       <context:annotation-config/>
+       
+       <!-- 
+                    // 1) First looks for type (if single bean per type)
+	                // 2) Then Looks for name If multiple bean of same type               
+	                // 3) If multiple bean of same type and name also do not match use @Qualifire  
+       --> 
+	 
+ 
+    <!--  first look for type -->    
+        
+        <bean id="currencyConverter" class="training.spring.CurrencyConverter"/> 
+               
+        <bean id="exchangeService1" class="training.spring.ExchangeService" >
+                   <qualifier value="xyz"></qualifier>
+        </bean> 
+        <bean id="exchangeService2" class="training.spring.ExchangeService" /> 
+        
+   
+   
+	
+	<!--  if multiple bean of same type then it looks for name  -->
+	
+		    <!-- 
+			  <bean id="currencyConverter" class="training.spring.CurrencyConverter"/>  
+			  <bean id="exchangeService1" class="training.spring.ExchangeService"/>
+			  <bean id="exchangeService2" class="training.spring.ExchangeService"/> 
+		   -->
+		
+<!--  multiple bean of same type and bean name also does not match with the property  -->
+	    
+		<!--  
+		<bean id="currencyConverter" class="training.spring.CurrencyConverter" />  
+       
+        <bean id="exchangeService1" class="training.spring.ExchangeService">
+		  	       <qualifier value="exServ"></qualifier>
+		</bean>
+		<bean id="exchangeService2" class="training.spring.ExchangeService"/>
+	 	 -->
+		 
+		 
+		 <!-- id can also be use as a qualifier :@Autowired@Qualifier("exchangeService1") if <qualifier value="exServ"> is not used -->
+	 
+	</beans>
+	
+	
+	
+   <!-- 
+      
+          1 . Configure AutowiredAnnotationBeanPostProcessor 
+	      <bean class="org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor" />
+	      
+	      2 .
+	      <context:annotation-config/> 
+	      is used to activate annotations for beans already registered in the application context 
+	      
+	      3.	
+	      <context:component-scan> can also do what <context:annotation-config> does and  
+	      it also scans packages to find and register beans within the application context.    
+	      <context:component-scan base-package="training.spring"/>       
+      
+            
+      -->
+	
+	 

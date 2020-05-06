@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans 
+       http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+	
+	         
+	      
+		 			 
+		 	 <bean id="exchangeService" class="com.exchange.ExchangeService"/> 
+	 		
+			 <bean id="currencyConverter" class="com.exchange.CurrencyConverter"> 
+			     <property name="exchangeService"  ref="exchangeService"></property>
+			 </bean> 
+			  
+			  
+		     		   
+             <!--
+                  NOTE : First all bean instantiation will take place (in same order they are configured) 
+                         and Then all dependencies will be get resolved.(not in case of constructor injection)
+             -->
+</beans>
+
+
+
+<!--  Inner Bean -->
+          <!--  <bean id="currencyConverter" class="com.exchange.CurrencyConverter"> 
+				     <property name="exchangeService">
+				           <bean class="com.exchange.ExchangeService"/>			     
+				     </property>
+			    </bean> -->
+          

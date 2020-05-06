@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="
+       http://www.springframework.org/schema/beans 
+       http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+
+	<!-- singleton and prototype -->
+
+
+	<!-- <bean id="smtpMailSender" class="mail.SmtpMailSender" scope="prototype"></bean> -->
+
+
+	<!-- prototype-bean with Singleton beans dependencies: -->
+
+	<!-- <bean id="mailSender" class="mail.MailSender" scope="prototype"> <property 
+		name="smtpMailSender" ref="smtp"></property> </bean> <bean id="smtp" class="mail.SmtpMailSender" 
+		></bean> -->
+
+
+
+
+
+
+	<!-- Singleton beans with prototype-bean dependencies: * As dependencies 
+		are resolved at instantiation time.if inject a prototype-scoped bean into 
+		a singleton-scoped bean * a brand new prototype bean will be instantiated 
+		and then dependency injected into the singleton * bean... but that is all. 
+		That exact same prototype instance will be the sole instance that is ever 
+		* supplied to the singleton-scoped bean. -->
+
+	<bean id="mailSender" class="mail.MailSender">
+		<property name="smtpMailSender" ref="smtp"></property>
+	</bean>
+	<bean id="smtp" class="mail.SmtpMailSender" scope="prototype"></bean>
+
+
+
+
+
+</beans>
+

@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+	http://www.springframework.org/schema/beans/spring-beans.xsd">
+ 
+<!-- constructor injection --> 	
+
+     <bean id="msgBean" class="com.springcore.di.Message"/> 
+      
+
+ <!-- if we have only one constructor with single argument -->
+   <!--   <bean id="msgBean" class="com.springcore.di.Message">  
+	    <constructor-arg value="100"></constructor-arg> 
+	 </bean> -->  
+	 
+	 
+ <!--  use 'type' - if have more than one constructor with same number of args  -->	 
+ 
+	 <!--   <bean id="msgBean" class="com.springcore.di.Message">  
+	    <constructor-arg  type="int" value="100"></constructor-arg>  
+	 </bean> --> 
+	
+	 
+<!-- constructor with multiple arguments -->
+
+<!-- should follows the order of arguments of Constructor is inside the bean  -->
+	    <!--  <bean id="msgBean" class="com.springcore.di.Message"> 
+		    <constructor-arg  value="100"></constructor-arg> 
+			<constructor-arg  value="welcome"></constructor-arg> 
+			 
+		 </bean>  -->
+		 
+<!-- This will not work as first argument inside constructor is 'int' and 'welcome' can't map to 'int' type. -->		 
+		<!--  <bean id="msgBean" class="com.springcore.di.Message">  
+		    <constructor-arg  value="welcome"></constructor-arg> 
+			<constructor-arg  value="100"></constructor-arg> -->
+			
+		 
+<!-- even this will work as 100 can be mapped to String --> 	 
+		 <!-- <bean id="msgBean" class="com.springcore.di.Message">  
+		    <constructor-arg  value="100"></constructor-arg> 
+			<constructor-arg  value="500"></constructor-arg> 
+		 </bean> -->
+ 
+	 
+<!--  can use 'type' or 'index 'for in above situation-->	 
+	  <!-- <bean id="msgBean" class="com.springcore.di.Message" >   
+	    <constructor-arg   value="welcome"></constructor-arg> 
+		<constructor-arg   type="int" value="100"></constructor-arg>  
+	 </bean>  --> 
+	 
+	   
+	<!--  <bean id="msgBean" class="com.springcore.di.Message">   
+	    <constructor-arg value="welcome"></constructor-arg> 
+		<constructor-arg  index="0" value="100"></constructor-arg>  
+	 </bean> -->
+	
+	<!-- <bean id="msgBean" class="com.springcore.di.Message"/>
+	  will not work if POJO have only constructor with parameter and not have no args constructor 
+	 -->
+    
+</beans>
